@@ -1,0 +1,981 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facile Design - Premium Australian Ceramic Cups</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* ============================================
+           RESET & GLOBAL STYLES
+           ============================================ */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #1c1c1c;
+            background-color: #fafaf8;
+            line-height: 1.6;
+        }
+
+        /* Color Variables */
+        :root {
+            --navy: #1a2744;
+            --beige: #f5f0e8;
+            --off-white: #fafaf8;
+            --black: #1c1c1c;
+            --grey: #e8e4dc;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        button {
+            font-family: 'Inter', sans-serif;
+            cursor: pointer;
+            border: none;
+            transition: all 0.3s ease;
+        }
+
+        /* ============================================
+           NAVIGATION
+           ============================================ */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background-color: #fafaf8;
+            padding: 24px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--grey);
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 4px;
+            color: var(--navy);
+            text-transform: uppercase;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 48px;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--black);
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background-color: var(--navy);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .hamburger span {
+            width: 24px;
+            height: 2px;
+            background-color: var(--navy);
+            margin: 5px 0;
+            transition: all 0.3s ease;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(10px, 10px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 16px 20px;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-links {
+                position: absolute;
+                top: 65px;
+                left: 0;
+                right: 0;
+                background-color: #fafaf8;
+                flex-direction: column;
+                gap: 24px;
+                padding: 32px 20px;
+                display: none;
+                border-bottom: 1px solid var(--grey);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links a {
+                font-size: 16px;
+            }
+        }
+
+        /* ============================================
+           HERO SECTION
+           ============================================ */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 80px 40px;
+            gap: 60px;
+            background-color: #fafaf8;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            flex: 1;
+            max-width: 600px;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .hero-label {
+            font-size: 12px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--navy);
+            font-weight: 600;
+            margin-bottom: 24px;
+            display: block;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 64px;
+            font-weight: 600;
+            line-height: 1.2;
+            color: var(--navy);
+            margin-bottom: 16px;
+        }
+
+        .hero-subtitle {
+            font-size: 18px;
+            color: #666;
+            margin-bottom: 40px;
+            font-weight: 300;
+            line-height: 1.6;
+        }
+
+        .cta-button {
+            background-color: var(--navy);
+            color: #fafaf8;
+            padding: 16px 40px;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background-color: var(--black);
+            transform: translateY(-2px);
+        }
+
+        .hero-image {
+            flex: 1;
+            animation: fadeInRight 0.8s ease;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .hero {
+                flex-direction: column;
+                padding: 60px 20px;
+                min-height: auto;
+            }
+
+            .hero h1 {
+                font-size: 48px;
+            }
+
+            .hero-image {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                padding: 40px 20px;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .hero-subtitle {
+                font-size: 16px;
+            }
+        }
+
+        /* ============================================
+           COLLECTION SECTION
+           ============================================ */
+        .collection {
+            padding: 100px 40px;
+            background-color: #fafaf8;
+        }
+
+        .section-heading {
+            font-family: 'Playfair Display', serif;
+            font-size: 48px;
+            font-weight: 600;
+            color: var(--navy);
+            margin-bottom: 60px;
+            text-align: center;
+        }
+
+        .collection-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .product-card {
+            background-color: #fff;
+            border-radius: 2px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+            transition: all 0.3s ease;
+            animation: fadeInUp 0.6s ease;
+        }
+
+        .product-card:hover {
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+            transform: translateY(-4px);
+        }
+
+        .product-image {
+            width: 100%;
+            height: auto;
+            background-color: var(--grey);
+        }
+
+        .product-image img {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+        }
+
+        .product-content {
+            padding: 32px;
+        }
+
+        .product-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            font-weight: 600;
+            color: var(--navy);
+            margin-bottom: 8px;
+        }
+
+        .product-specs {
+            font-size: 13px;
+            color: #999;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 16px;
+            font-weight: 500;
+        }
+
+        .product-price {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--black);
+            margin-bottom: 24px;
+        }
+
+        .product-button {
+            width: 100%;
+            background-color: var(--navy);
+            color: #fafaf8;
+            padding: 14px;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .product-button:hover {
+            background-color: var(--black);
+        }
+
+        @media (max-width: 1024px) {
+            .collection {
+                padding: 80px 20px;
+            }
+
+            .collection-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .section-heading {
+                font-size: 36px;
+                margin-bottom: 40px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .collection {
+                padding: 60px 20px;
+            }
+
+            .collection-grid {
+                gap: 30px;
+            }
+
+            .product-image {
+                height: auto;
+            }
+
+            .product-content {
+                padding: 24px;
+            }
+
+            .product-name {
+                font-size: 22px;
+            }
+        }
+
+        /* ============================================
+           STORY SECTION
+           ============================================ */
+        .story {
+            padding: 100px 40px;
+            background-color: #fafaf8;
+        }
+
+        .story-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            max-width: 1200px;
+            margin: 0 auto;
+            align-items: center;
+        }
+
+        .story-content h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 42px;
+            font-weight: 600;
+            color: var(--navy);
+            margin-bottom: 24px;
+            line-height: 1.3;
+        }
+
+        .story-content p {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 16px;
+        }
+
+        .story-visual {
+            background: linear-gradient(135deg, var(--beige) 0%, var(--grey) 100%);
+            height: 400px;
+            border-radius: 2px;
+            position: relative;
+            animation: fadeInRight 0.8s ease;
+        }
+
+        .story-visual::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 40%;
+            height: 60%;
+            border: 1px solid rgba(26, 39, 68, 0.1);
+        }
+
+        .story-visual::after {
+            content: '';
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            width: 50%;
+            height: 50%;
+            border: 1px solid rgba(26, 39, 68, 0.1);
+        }
+
+        @media (max-width: 1024px) {
+            .story {
+                padding: 80px 20px;
+            }
+
+            .story-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .story-content h2 {
+                font-size: 32px;
+            }
+
+            .story-visual {
+                height: 300px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .story {
+                padding: 60px 20px;
+            }
+
+            .story-content h2 {
+                font-size: 28px;
+            }
+
+            .story-content p {
+                font-size: 15px;
+            }
+        }
+
+        /* ============================================
+           CRAFT FEATURES SECTION
+           ============================================ */
+        .craft {
+            padding: 100px 40px;
+            background-color: #fafaf8;
+        }
+
+        .craft-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 60px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .craft-item {
+            text-align: center;
+            animation: fadeInUp 0.6s ease;
+        }
+
+        .craft-icon {
+            font-size: 48px;
+            margin-bottom: 24px;
+            height: 80px;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+        }
+
+        .craft-item h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 22px;
+            font-weight: 600;
+            color: var(--navy);
+            margin-bottom: 12px;
+        }
+
+        .craft-item p {
+            font-size: 15px;
+            line-height: 1.7;
+            color: #666;
+        }
+
+        @media (max-width: 1024px) {
+            .craft {
+                padding: 80px 20px;
+            }
+
+            .craft-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .craft {
+                padding: 60px 20px;
+            }
+
+            .craft-item h3 {
+                font-size: 18px;
+            }
+
+            .craft-item p {
+                font-size: 14px;
+            }
+        }
+
+        /* ============================================
+           EMAIL CAPTURE SECTION
+           ============================================ */
+        .email-capture {
+            padding: 80px 40px;
+            background-color: var(--beige);
+            text-align: center;
+        }
+
+        .email-container {
+            max-width: 600px;
+            margin: 0 auto;
+            animation: fadeInUp 0.6s ease;
+        }
+
+        .email-capture h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 42px;
+            font-weight: 600;
+            color: var(--navy);
+            margin-bottom: 12px;
+        }
+
+        .email-capture p {
+            font-size: 16px;
+            color: #555;
+            margin-bottom: 40px;
+        }
+
+        .email-form {
+            display: flex;
+            gap: 12px;
+            flex-direction: column;
+        }
+
+        .email-form input {
+            padding: 16px 20px;
+            border: 1px solid #ccc;
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            border-radius: 2px;
+            background-color: #fff;
+            transition: all 0.3s ease;
+        }
+
+        .email-form input:focus {
+            outline: none;
+            border-color: var(--navy);
+            box-shadow: 0 0 0 2px rgba(26, 39, 68, 0.1);
+        }
+
+        .email-form button {
+            padding: 16px 20px;
+            background-color: var(--navy);
+            color: #fafaf8;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .email-form button:hover {
+            background-color: var(--black);
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .email-capture {
+                padding: 60px 20px;
+            }
+
+            .email-capture h2 {
+                font-size: 32px;
+            }
+
+            .email-capture p {
+                font-size: 15px;
+            }
+        }
+
+        /* ============================================
+           FOOTER
+           ============================================ */
+        footer {
+            background-color: var(--navy);
+            color: #fff;
+            padding: 60px 40px;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 40px;
+            align-items: flex-start;
+        }
+
+        .footer-section h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        .footer-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .footer-section p {
+            font-size: 13px;
+            line-height: 1.8;
+            opacity: 0.8;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .footer-links a {
+            font-size: 13px;
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+        }
+
+        .footer-contact a {
+            font-size: 13px;
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+        }
+
+        .footer-contact a:hover {
+            opacity: 1;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 40px;
+            text-align: center;
+            font-size: 12px;
+            opacity: 0.6;
+        }
+
+        @media (max-width: 1024px) {
+            .footer-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            footer {
+                padding: 40px 20px;
+            }
+
+            .footer-container {
+                gap: 30px;
+            }
+
+            .footer-section h4 {
+                margin-bottom: 8px;
+            }
+        }
+
+        /* ============================================
+           SCROLL ANIMATION
+           ============================================ */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- NAVIGATION -->
+    <nav>
+        <a href="#" class="logo">Facile Design</a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#shop">Shop</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-content">
+            <span class="hero-label">Australian Ceramic Brand</span>
+            <h1>Crafted for the ritual</h1>
+            <p class="hero-subtitle">Premium reactive glaze cups for the home barista</p>
+            <button class="cta-button" onclick="document.getElementById('shop').scrollIntoView({behavior: 'smooth'})">Discover our cups</button>
+        </div>
+        <div class="hero-image">
+            <img src="assets/images/Hero_landing-page-1.png" alt="Facile Design hero image">
+        </div>
+    </section>
+
+    <!-- COLLECTION SECTION -->
+    <section class="collection" id="shop">
+        <h2 class="section-heading">The Collection</h2>
+        <div class="collection-grid">
+            <div class="product-card fade-in">
+                <div class="product-image">
+                    <img src="assets/images/Espresso_100_blue_with_background.png" alt="Espresso Cup">
+                </div>
+                <div class="product-content">
+                    <h3 class="product-name">Espresso Cup</h3>
+                    <p class="product-specs">100ml · Set of 2</p>
+                    <p class="product-price">From $34.95</p>
+                    <a href="#"><button class="product-button">Shop on Amazon</button></a>
+                </div>
+            </div>
+            <div class="product-card fade-in">
+                <div class="product-image">
+                    <img src="assets/images/Latte_165_blue_black_with_backgorund.png" alt="Flat White Cup">
+                </div>
+                <div class="product-content">
+                    <h3 class="product-name">Flat White Cup</h3>
+                    <p class="product-specs">165ml · Set of 2</p>
+                    <p class="product-price">From $44.95</p>
+                    <a href="#"><button class="product-button">Shop on Amazon</button></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- STORY SECTION -->
+    <section class="story" id="about">
+        <div class="story-container">
+            <div class="story-content fade-in">
+                <h2>Where craft meets ritual</h2>
+                <p>Facile Design was born from a love of exceptional coffee and the objects that make it special. Each cup is individually kiln-fired, creating a unique reactive glaze that is never quite the same twice.</p>
+                <p>Designed in Australia, crafted with intention.</p>
+            </div>
+            <div class="story-visual fade-in"></div>
+        </div>
+    </section>
+
+    <!-- CRAFT FEATURES -->
+    <section class="craft">
+        <div class="craft-grid">
+            <div class="craft-item fade-in">
+                <div class="craft-icon">🔥</div>
+                <h3>Kiln-fired</h3>
+                <p>Each piece uniquely fired at 1280°C</p>
+            </div>
+            <div class="craft-item fade-in">
+                <div class="craft-icon">✓</div>
+                <h3>Food Safe</h3>
+                <p>FDA and LFGB certified</p>
+            </div>
+            <div class="craft-item fade-in">
+                <div class="craft-icon">◆</div>
+                <h3>Unique by nature</h3>
+                <p>No two cups are ever the same</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- EMAIL CAPTURE -->
+    <section class="email-capture">
+        <div class="email-container fade-in">
+            <h2>New collections. First.</h2>
+            <p>Join our community of home baristas.</p>
+            <form class="email-form" onsubmit="handleEmailSubmit(event)">
+                <input type="email" placeholder="Enter your email" required>
+                <button type="submit">Subscribe</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer id="contact">
+        <div class="footer-container">
+            <div class="footer-section">
+                <a href="#" class="footer-logo">Facile Design</a>
+                <p>Premium ceramic homewares<br>Sydney, Australia</p>
+            </div>
+            <div class="footer-section">
+                <h4>Navigation</h4>
+                <div class="footer-links">
+                    <a href="#shop">Shop</a>
+                    <a href="#about">About</a>
+                    <a href="#contact">Contact</a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h4>Contact</h4>
+                <div class="footer-contact">
+                    <a href="mailto:contact@faciledesign.com">contact@faciledesign.com</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Facile Design. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        // Close mobile menu when link is clicked
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(element => {
+            observer.observe(element);
+        });
+
+        // Email form handling
+        function handleEmailSubmit(event) {
+            event.preventDefault();
+            const button = event.target.querySelector('button');
+            const originalText = button.textContent;
+            button.textContent = 'Subscribed!';
+            button.style.backgroundColor = '#1c1c1c';
+            
+            setTimeout(() => {
+                event.target.reset();
+                button.textContent = originalText;
+                button.style.backgroundColor = '';
+            }, 2000);
+        }
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href !== '#') {
+                    e.preventDefault();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
