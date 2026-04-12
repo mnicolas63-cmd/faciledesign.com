@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Facile Design</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* RESET & GLOBAL */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #1c1c1c;
+            background-color: #fafaf8;
+            line-height: 1.6;
+        }
+
+        :root {
+            --navy: #1a2744;
+            --beige: #f5f0e8;
+            --off-white: #fafaf8;
+            --black: #1c1c1c;
+            --grey: #e8e4dc;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        button {
+            font-family: 'Inter', sans-serif;
+            cursor: pointer;
+            border: none;
+            transition: all 0.3s ease;
+        }
+
+        /* NAVIGATION */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background-color: #fff;
+            padding: 24px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--grey);
+        }
+
+        .logo {
+            display: inline-flex;
+            align-items: center;
+            padding: 8px 0;
+        }
+
+        .logo-image {
+            width: 320px;
+            height: auto;
+            display: inline-block;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 48px;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--black);
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background-color: var(--navy);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .hamburger span {
+            width: 24px;
+            height: 2px;
+            background-color: var(--navy);
+            margin: 5px 0;
+            transition: all 0.3s ease;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(10px, 10px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 16px 20px;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-links {
+                position: absolute;
+                top: 65px;
+                left: 0;
+                right: 0;
+                background-color: #fff;
+                flex-direction: column;
+                gap: 24px;
+                padding: 32px 20px;
+                display: none;
+                border-bottom: 1px solid var(--grey);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links a {
+                font-size: 16px;
+            }
+        }
+
+        /* HERO */
+        .hero {
+            min-height: 50vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 80px 40px;
+            background-color: #fafaf8;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 760px;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 48px;
+            font-weight: 600;
+            line-height: 1.2;
+            color: var(--navy);
+            margin-bottom: 24px;
+        }
+
+        .hero-subtitle {
+            font-size: 20px;
+            color: #666;
+            margin-bottom: 0;
+            font-weight: 300;
+            line-height: 1.8;
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                padding: 60px 20px;
+                min-height: 40vh;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .hero-subtitle {
+                font-size: 18px;
+            }
+        }
+
+        /* PAGE CONTENT */
+        .page-content {
+            max-width: 920px;
+            margin: 0 auto;
+            padding: 80px 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        .contact-block {
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 18px 40px rgba(0, 0, 0, 0.08);
+            padding: 48px 40px;
+            display: grid;
+            gap: 28px;
+            text-align: center;
+        }
+
+        .contact-item {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .contact-item strong {
+            font-family: 'Playfair Display', serif;
+            font-size: 18px;
+            color: var(--navy);
+            font-weight: 600;
+        }
+
+        .contact-item p,
+        .contact-item a {
+            font-size: 17px;
+            color: #555;
+            line-height: 1.8;
+        }
+
+        .contact-item a {
+            color: var(--navy);
+            transition: opacity 0.25s ease;
+        }
+
+        .contact-item a:hover {
+            opacity: 0.8;
+        }
+
+        .trust-line {
+            text-align: center;
+            color: #777;
+            font-size: 14px;
+            letter-spacing: 0.2px;
+            margin-top: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .page-content {
+                padding: 60px 20px;
+            }
+
+            .contact-block {
+                padding: 32px 24px;
+            }
+        }
+
+        /* FOOTER */
+        footer {
+            background-color: var(--navy);
+            color: #fff;
+            padding: 60px 40px;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 40px;
+            align-items: flex-start;
+        }
+
+        .footer-section h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        .footer-section p,
+        .footer-links a {
+            font-size: 13px;
+            line-height: 1.8;
+            opacity: 0.8;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .footer-links a {
+            color: #fff;
+            transition: opacity 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 40px;
+            text-align: center;
+            font-size: 12px;
+            opacity: 0.6;
+        }
+
+        @media (max-width: 1024px) {
+            .footer-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            footer {
+                padding: 40px 20px;
+            }
+
+            .footer-container {
+                gap: 30px;
+            }
+
+            .footer-section h4 {
+                margin-bottom: 8px;
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="index.html" class="logo">
+            <img src="assets/images/Logo.png" alt="Facile Design logo" class="logo-image">
+        </a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="index.html#shop">Shop</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <div class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Get in touch</h1>
+            <p class="hero-subtitle">Questions, collaborations, or just saying hello — we'd love to hear from you.</p>
+        </div>
+    </section>
+
+    <main class="page-content">
+        <section class="contact-block fade-in">
+            <div class="contact-item">
+                <strong>Email</strong>
+                <a href="mailto:contact@faciledesign.com">contact@faciledesign.com</a>
+            </div>
+            <div class="contact-item">
+                <strong>Location</strong>
+                <p>Sydney, Australia</p>
+            </div>
+            <div class="contact-item">
+                <strong>Response time</strong>
+                <p>Within 48 hours</p>
+            </div>
+        </section>
+
+        <section class="content-section fade-in">
+            <h2 class="section-title">Trade & wholesale</h2>
+            <p class="section-text center">
+                For cafés, hotels, and retailers interested in stocking Facile Design, please reach out via email with your business details.
+            </p>
+            <p class="trust-line">
+                Facile Design | ABN 88 634 285 770 | Sydney NSW, Australia
+            </p>
+        </section>
+    </main>
+
+    <footer id="contact">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h4>Facile Design</h4>
+                <p>Premium ceramic homewares<br>Sydney, Australia</p>
+            </div>
+            <div class="footer-section">
+                <h4>Navigation</h4>
+                <div class="footer-links">
+                    <a href="index.html">Home</a>
+                    <a href="about.html">About</a>
+                    <a href="index.html#shop">Shop</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h4>Contact</h4>
+                <div class="footer-contact">
+                    <a href="mailto:contact@faciledesign.com">contact@faciledesign.com</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Facile Design. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(element => {
+            observer.observe(element);
+        });
+    </script>
+</body>
+</html>
