@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Facile Design - Premium Australian Ceramics</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* ============================================
+           RESET & GLOBAL STYLES
+           ============================================ */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #1c1c1c;
+            background-color: #fafaf8;
+            line-height: 1.6;
+        }
+
+        /* Color Variables */
+        :root {
+            --navy: #1a2744;
+            --beige: #f5f0e8;
+            --off-white: #fafaf8;
+            --black: #1c1c1c;
+            --grey: #e8e4dc;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        button {
+            font-family: 'Inter', sans-serif;
+            cursor: pointer;
+            border: none;
+            transition: all 0.3s ease;
+        }
+
+        /* ============================================
+           NAVIGATION
+           ============================================ */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background-color: #fff;
+            padding: 24px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--grey);
+        }
+
+        .logo {
+            display: inline-flex;
+            align-items: center;
+            padding: 8px 0;
+        }
+
+        .logo-image {
+            width: 320px;
+            height: auto;
+            display: inline-block;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 48px;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--black);
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background-color: var(--navy);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .hamburger span {
+            width: 24px;
+            height: 2px;
+            background-color: var(--navy);
+            margin: 5px 0;
+            transition: all 0.3s ease;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(10px, 10px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 16px 20px;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-links {
+                position: absolute;
+                top: 65px;
+                left: 0;
+                right: 0;
+                background-color: #fff;
+                flex-direction: column;
+                gap: 24px;
+                padding: 32px 20px;
+                display: none;
+                border-bottom: 1px solid var(--grey);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links a {
+                font-size: 16px;
+            }
+        }
+
+        /* ============================================
+           HERO SECTION
+           ============================================ */
+        .hero {
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 80px 40px;
+            background-color: #fafaf8;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 48px;
+            font-weight: 600;
+            line-height: 1.2;
+            color: var(--navy);
+            margin-bottom: 24px;
+        }
+
+        .hero-subtitle {
+            font-size: 20px;
+            color: #666;
+            margin-bottom: 40px;
+            font-weight: 300;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                padding: 60px 20px;
+                min-height: 50vh;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .hero-subtitle {
+                font-size: 18px;
+            }
+        }
+
+        /* ============================================
+           ABOUT CONTENT
+           ============================================ */
+        .about-content {
+            padding: 100px 40px;
+            background-color: #fafaf8;
+        }
+
+        .content-section {
+            max-width: 1200px;
+            margin: 0 auto 80px;
+        }
+
+        .content-section:last-child {
+            margin-bottom: 0;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 36px;
+            font-weight: 600;
+            color: var(--navy);
+            margin-bottom: 32px;
+            text-align: center;
+        }
+
+        .section-text {
+            font-size: 18px;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 24px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .section-text.center {
+            text-align: center;
+        }
+
+        .about-story-image {
+            max-width: 1200px;
+            margin: 0 auto 40px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 18px 40px rgba(0, 0, 0, 0.12);
+            background: #f8f3ec;
+        }
+
+        .about-story-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .craft-showcase {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 60px;
+            align-items: center;
+        }
+
+        .craft-image {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 18px 40px rgba(0, 0, 0, 0.16);
+            background: #f8f3ec;
+        }
+
+        .craft-image img {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .commitment-list {
+            max-width: 600px;
+            margin: 0 auto;
+            margin-top: 40px;
+        }
+
+        .commitment-item {
+            display: flex;
+            align-items: center;
+            padding: 16px 0;
+            border-bottom: 1px solid var(--grey);
+        }
+
+        .commitment-item:last-child {
+            border-bottom: none;
+        }
+
+        .commitment-item p {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #555;
+            margin: 0;
+            text-align: center;
+            width: 100%;
+        }
+
+        .value-item {
+            text-align: center;
+            padding: 40px 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .value-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .value-item h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--navy);
+            margin-bottom: 16px;
+        }
+
+        .value-item p {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #666;
+        }
+
+        @media (max-width: 1024px) {
+            .about-content {
+                padding: 80px 20px;
+            }
+
+            .craft-showcase {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .section-title {
+                font-size: 28px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .about-content {
+                padding: 60px 20px;
+            }
+
+            .values-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .value-item {
+                padding: 30px 20px;
+            }
+        }
+
+        /* ============================================
+           FOOTER
+           ============================================ */
+        footer {
+            background-color: var(--navy);
+            color: #fff;
+            padding: 60px 40px;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 40px;
+            align-items: flex-start;
+        }
+
+        .footer-section h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        .footer-section p {
+            font-size: 13px;
+            line-height: 1.8;
+            opacity: 0.8;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .footer-links a {
+            font-size: 13px;
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 40px;
+            text-align: center;
+            font-size: 12px;
+            opacity: 0.6;
+        }
+
+        @media (max-width: 1024px) {
+            .footer-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            footer {
+                padding: 40px 20px;
+            }
+
+            .footer-container {
+                gap: 30px;
+            }
+
+            .footer-section h4 {
+                margin-bottom: 8px;
+            }
+        }
+
+        /* ============================================
+           SCROLL ANIMATION
+           ============================================ */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- NAVIGATION -->
+    <nav>
+        <a href="index.html" class="logo">
+            <img src="assets/images/Logo.png" alt="Facile Design logo" class="logo-image">
+        </a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="index.html#shop">Shop</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+        <div class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>The art of the everyday</h1>
+            <p class="hero-subtitle">An Australian brand bringing premium ceramics to those who believe daily rituals deserve beautiful objects.</p>
+        </div>
+    </section>
+
+    <!-- ABOUT CONTENT -->
+    <section class="about-content">
+        <!-- OUR STORY -->
+        <div class="content-section fade-in">
+            <div class="about-story-image">
+                <img src="assets/images/about_1.png" alt="About Facile Design">
+            </div>
+            <h2 class="section-title">Our story</h2>
+            <p class="section-text center">
+                Every morning, millions of coffee lovers perform the same ritual. The sound of the grinder. The pull of the shot. The slow pour of steamed milk. The first sip — that quiet moment before the day begins.
+            </p>
+            <p class="section-text center">
+                It's a sensorial experience, repeated daily, and the objects we hold shape every part of it. The weight of the cup. The warmth against the palm. The curve that guides the first sip to the lips.
+            </p>
+            <p class="section-text center">
+                Facile Design was founded in Sydney to elevate this ritual. We select premium ceramic objects for people who understand that exceptional coffee deserves exceptional vessels. Every piece in our collection is kiln-fired using reactive glaze — a technique where no two cups are ever exactly alike. Subtle variations in colour, flow, and texture are the signature of the craft.
+            </p>
+            <p class="section-text center">
+                The name reflects our philosophy: facile — to make the exceptional feel effortless.
+            </p>
+        </div>
+
+        <!-- A BRIEF HISTORY OF CERAMIC -->
+        <div class="content-section fade-in">
+            <h2 class="section-title">A brief history of ceramic</h2>
+            <p class="section-text center">
+                Ceramic is humanity's oldest functional art. For over 20,000 years, civilisations have shaped clay into vessels that carry meaning as much as they carry water, wine, or coffee.
+            </p>
+            <p class="section-text center">
+                The Chinese mastered porcelain during the Tang and Song dynasties, developing high-fire techniques and reactive glazes still studied today. The Japanese refined the art through wabi-sabi — the beauty of imperfection — and gave us the yunomi, the handleless cup designed to be held with both hands. The Koreans perfected celadon. The Greeks painted their myths onto amphorae. The Italians of Deruta and the French of Limoges raised tableware to the status of heirloom.
+            </p>
+            <p class="section-text center">
+                Every cup in our collection stands on this lineage — thousands of years of hands, kilns, and quiet mastery.
+            </p>
+        </div>
+
+        <!-- OUR COMMITMENT -->
+        <div class="content-section fade-in">
+            <h2 class="section-title">Our commitment</h2>
+            <div class="commitment-list">
+                <div class="commitment-item">
+                    <p>Premium ceramics sourced from experienced manufacturers</p>
+                </div>
+                <div class="commitment-item">
+                    <p>LFGB and CE certified food-safe</p>
+                </div>
+                <div class="commitment-item">
+                    <p>Lead and cadmium compliant with Australian Food Standards</p>
+                </div>
+                <div class="commitment-item">
+                    <p>Produced in BSCI-audited facilities</p>
+                </div>
+                <div class="commitment-item">
+                    <p>Curated in Australia for the Australian home</p>
+                </div>
+            </div>
+            <p class="section-text center" style="margin-top: 40px; font-style: italic;">
+                Curated in Sydney. Selected with intention. Chosen for the ritual.
+            </p>
+        </div>
+
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer id="contact">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h4>Facile Design</h4>
+                <p>Premium ceramic homewares<br>Sydney, Australia</p>
+            </div>
+            <div class="footer-section">
+                <h4>Navigation</h4>
+                <div class="footer-links">
+                    <a href="index.html">Home</a>
+                    <a href="#about">About</a>
+                    <a href="index.html#shop">Shop</a>
+                    <a href="index.html#contact">Contact</a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h4>Contact</h4>
+                <div class="footer-contact">
+                    <a href="mailto:contact@faciledesign.com">contact@faciledesign.com</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Facile Design. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        // Close mobile menu when link is clicked
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(element => {
+            observer.observe(element);
+        });
+    </script>
+</body>
+</html>
